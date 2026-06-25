@@ -58,7 +58,7 @@ export default function SettingsPopup() {
                                 </Typography>
                             </label>
 
-                            <div className="flex-row-center gap-x-0 p-1 bg-muted rounded-full">
+                            <div className="flex-row-center gap-x-1 p-1 bg-muted rounded-full">
                                 {item.values?.map(val => (
                                     <Button
                                         onClick={() => updateSettings(item.id, val)}

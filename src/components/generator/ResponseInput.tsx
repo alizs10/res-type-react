@@ -63,6 +63,7 @@ export default function ResponseInput() {
                          
                            flex-1
                            min-h-0
+                           scrollbar-none
                            '
                     value={responseInput}
                     onChange={e => setResponseInput(e.target.value)}

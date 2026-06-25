@@ -3,50 +3,67 @@ import { atomOneDark, atomOneLight } from 'react-syntax-highlighter/dist/esm/sty
 
 import { useGenerator } from "../../contexts/GeneratorContext";
 import { Typography } from "../common/Typography";
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Button from '../common/Button';
 import { CopyCheckIcon, CopyIcon } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 
 export default function Result() {
-
-    const { result, copyResult } = useGenerator()
+    const { result, copyResult } = useGenerator();
     const { resolvedTheme } = useTheme();
 
     const showOptions = useMemo(() => {
-        return result.length > 0
-    }, [result])
+        return result.length > 0;
+    }, [result]);
 
-    const [isCopying, setIsCopying] = useState(false)
-    const [copied, setCopied] = useState(false)
-
+    const [isCopying, setIsCopying] = useState(false);
+    const [copied, setCopied] = useState(false);
+    const [displayLines, setDisplayLines] = useState<string[]>([]);
 
     async function copy() {
-        if (isCopying) return
-
-        setIsCopying(true)
+        if (isCopying) return;
+        setIsCopying(true);
 
         try {
-            const result = await copyResult()
-
+            const result = await copyResult();
             if (!result) {
-                console.log("copy response: show error toast")
-                return
+                console.log("copy response: show error toast");
+                return;
             }
-
-            setCopied(true)
+            setCopied(true);
             setTimeout(() => {
-                setCopied(false)
-            }, 3000)
-
+                setCopied(false);
+            }, 3000);
         } catch (error) {
-            console.log(error)
+            console.log(error);
         } finally {
-            setIsCopying(false)
+            setIsCopying(false);
         }
     }
 
+    // Reset and animate when result changes
+    useEffect(() => {
+        if (!result) {
+            setDisplayLines([]);
+            return;
+        }
+
+        const lines = result.split('\n');
+        setDisplayLines([]); // Reset display
+
+        let currentIndex = 0;
+        const interval = setInterval(() => {
+            currentIndex++;
+            setDisplayLines(lines.slice(0, currentIndex));
+
+            if (currentIndex >= lines.length) {
+                clearInterval(interval);
+            }
+        }, 100);
+
+        return () => clearInterval(interval);
+    }, [result]); // Only depends on result, not currentLineIndex
 
     return (
         <div className="flex flex-col gap-y-2 h-full max-h-full">
@@ -63,31 +80,25 @@ export default function Result() {
                         '
                 />
 
-
-
-                <div className="h-full w-full overflow-y-scroll text-xs md:text-base">
+                <div className="h-full w-full overflow-y-scroll scrollbar-none text-xs md:text-base">
                     <SyntaxHighlighter
                         language="typescript"
                         style={resolvedTheme === 'dark' ? atomOneDark : atomOneLight}
                         customStyle={{
                             background: "transparent",
-                            // borderRadius: "1rem",
-                            // margin: 0,
                             fontSize: 'inherit',
-                            padding: 16
+                            padding: 16,
+                            paddingBottom: 64
                         }}
-
                         showLineNumbers
                     >
-                        {result}
+                        {displayLines.join('\n')}
                     </SyntaxHighlighter>
                 </div>
 
                 <AnimatePresence>
-
                     {showOptions && (
                         <motion.div
-
                             initial={{ y: 80 }}
                             animate={{ y: 0 }}
                             exit={{ y: 80 }}
@@ -96,13 +107,12 @@ export default function Result() {
                                 duration: .2
                             }}
                             className="absolute inset-4 top-auto flex-center justify-end">
-
-
                             <Button
                                 onClick={copy}
                                 disabled={isCopying}
                                 className="overflow-clip"
-                                size="icon" variant="success">
+                                size="icon"
+                                variant="success">
                                 <AnimatePresence mode="wait">
                                     {copied ? (
                                         <motion.div
@@ -115,9 +125,7 @@ export default function Result() {
                                                 duration: .1
                                             }}
                                         >
-                                            <CopyCheckIcon
-
-                                                className="size-4 text-success" />
+                                            <CopyCheckIcon className="size-4 text-success" />
                                         </motion.div>
                                     ) : (
                                         <motion.div
@@ -130,7 +138,6 @@ export default function Result() {
                                                 duration: .1
                                             }}
                                         >
-
                                             <CopyIcon className={`size-4`} />
                                         </motion.div>
                                     )}
@@ -138,9 +145,8 @@ export default function Result() {
                             </Button>
                         </motion.div>
                     )}
-
                 </AnimatePresence>
             </div>
         </div>
-    )
+    );
 }
