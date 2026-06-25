@@ -12,7 +12,7 @@ const ThemeToggleDropdown: React.FC = () => {
 
     if (!mounted) {
         // if (true) {
-        return <div className="flex items-center gap-1 p-1 border-t border-secondary-foreground/30 rounded-full bg-linear-to-b from-background/30 to-background backdrop-blur-3xl">
+        return <div className="flex items-center gap-1 p-1 border-t border-border rounded-full bg-linear-to-b from-background/30 to-background backdrop-blur-3xl">
 
             <div className="size-8 min-w-8 rounded-full bg-muted animate-pulse" />
             <div className="size-8 min-w-8 rounded-full bg-muted animate-pulse" />
@@ -27,7 +27,7 @@ const ThemeToggleDropdown: React.FC = () => {
 
     return (
         <div className="relative">
-            <div className="p-1 rounded-full border-t border-secondary-foreground/30 bg-linear-to-b from-background/30 to-background backdrop-blur-3xl flex-row-center gap-x-1">
+            <div className="p-1 rounded-full border-t border-border bg-linear-to-b from-background/30 to-background backdrop-blur-3xl flex-row-center gap-x-1">
                 <Button
                     onClick={() => {
                         setTheme('light');

@@ -52,7 +52,7 @@ type ButtonProps = LinkButtonProps | NativeButtonProps;
 
 const variantClasses: Record<ButtonVariant, string> = {
     primary:
-        "bg-gradient-to-b from-background to-background/30  backdrop-blur-3xl text-foreground border-t border-secondary-foreground/30 hover:to-primary/20 dark:hover:to-primary/50",
+        "bg-gradient-to-b from-background to-background/30  backdrop-blur-3xl text-foreground border-t border-border hover:to-primary/20 dark:hover:to-primary/50",
 
     // secondary:
     //     "bg-secondary text-secondary-foreground hover:outline-6 outline-secondary/10",
@@ -66,14 +66,14 @@ const variantClasses: Record<ButtonVariant, string> = {
     //     "border border-border bg-background hover:bg-warning/10 hover:border-warning hover:outline-6 outline-warning/10 hover:text-warning",
 
     ghost:
-        "bg-none hover:bg-gradient-to-b hover:from-secondary hover:to-background/30 hover:backdrop-blur-3xl border-t border-transparent hover:border-secondary-foreground/30 test-primary-foreground",
+        "bg-none hover:bg-gradient-to-b hover:from-secondary hover:to-background/30 hover:backdrop-blur-3xl border-t border-transparent hover:border-border test-primary-foreground",
 
     success:
-        "bg-gradient-to-b from-background to-background/30 backdrop-blur-3xl text-foreground border-t border-secondary-foreground/30 hover:to-success/20 dark:hover:to-success/50",
+        "bg-gradient-to-b from-background to-background/30 backdrop-blur-3xl text-foreground border-t border-border hover:to-success/20 dark:hover:to-success/50",
     // "ghost-success":
     //     "text-foreground hover:bg-success/10 hover:text-success",
     destructive:
-        "bg-gradient-to-b from-background to-background/30 backdrop-blur-3xl text-foreground border-t border-secondary-foreground/30 hover:to-destructive/20 dark:hover:to-destructive/50",
+        "bg-gradient-to-b from-background to-background/30 backdrop-blur-3xl text-foreground border-t border-border hover:to-destructive/20 dark:hover:to-destructive/50",
     // "ghost-destructive":
     //     "text-foreground hover:bg-destructive/10 hover:text-destructive",
     // warning:

@@ -133,7 +133,7 @@
   --warning-foreground: hsl(0 0% 100%);
 
   /* Border */
-  --border: hsl(240 5.9% 90%);
+  --border: hsl(240, 0.7%, 73.1%);
   --input: hsl(240 5.9% 90%);
   --ring: hsl(249.2 75.8% 58.6%);
 
@@ -187,7 +187,7 @@
   --warning-foreground: hsl(0 0% 100%);
 
   /* Border */
-  --border: hsl(240 3.7% 15.9%);
+  --border: hsl(240, 1%, 36.5%);
   --input: hsl(240 3.7% 15.9%);
   --ring: hsl(243.6 85.5% 66.7%);
 

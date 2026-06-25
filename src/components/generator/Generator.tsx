@@ -4,12 +4,18 @@ import ResponseInput from './ResponseInput'
 import Result from './Result'
 import { useGenerator } from '../../contexts/GeneratorContext'
 import SettingsPopup from './SettingsPopup'
+import { useMemo } from 'react'
+import { RefreshCwIcon, TrashIcon } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 export default function Generator() {
 
 
-    const { error, generate } = useGenerator()
+    const { responseInput, result, error, generate, clearAll } = useGenerator()
 
+    const showClearAll = useMemo(() => {
+        return responseInput.length > 0 || result.length > 0
+    }, [responseInput, result])
 
     return (
 
@@ -42,10 +48,38 @@ export default function Generator() {
                 )}
             </div>
 
-            <div className="w-full h-fit flex-center">
+            <div className="w-full h-fit flex-center gap-x-2">
+                <AnimatePresence>
+                    {
+                        showClearAll && (
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                exit={{ scale: 0 }}
+                                transition={{
+                                    ease: "linear",
+                                    duration: .2
+                                }}
+                            >
+                                <Button
+                                    onClick={clearAll}
+                                    variant='destructive' size='md'
+                                    leftIcon={<TrashIcon className='size-4' />}
+                                >
+                                    <Typography variant='body'>
+                                        Clear
+                                    </Typography>
+                                </Button>
+                            </motion.div>
+                        )
+                    }
+                </AnimatePresence>
+
                 <Button
                     onClick={generate}
-                    variant='primary' size='md'>
+                    variant='primary' size='md'
+                    leftIcon={<RefreshCwIcon className='size-4' />}
+                >
                     <Typography variant='body'>
                         Generate
                     </Typography>

@@ -10,6 +10,7 @@ interface GeneratorContextType {
     error: null | string
     result: string
     clearResponse: () => void
+    clearAll: () => void
     formatResponse: () => void
     copyResponse: () => Promise<boolean>
     copyResult: () => Promise<boolean>
@@ -87,6 +88,12 @@ export function GeneratorProvider({ children }: { children: ReactNode }) {
         setResponseInput("")
     }
 
+    const clearAll = () => {
+        setResponseInput("")
+        setResult("")
+        setError("")
+    }
+
     const formatResponse = () => {
 
 
@@ -135,7 +142,8 @@ export function GeneratorProvider({ children }: { children: ReactNode }) {
         copyResponse,
         copyResult,
         userSettings,
-        updateSettings
+        updateSettings,
+        clearAll
     }
 
 

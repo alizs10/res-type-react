@@ -53,7 +53,7 @@ export default function ResponseInput() {
             </label>
             <div className="flex relative overflow-clip flex-1 min-h-0">
                 <textarea
-                    className='w-full rounded-3xl border-t border-secondary-foreground/30 p-4 bg-linear-to-b from-background to-secondary/30 backdrop-blur-3xl placeholder:text-muted-foreground text-foreground
+                    className='w-full rounded-3xl border-t border-border p-4 bg-linear-to-b from-background to-secondary/30 backdrop-blur-3xl placeholder:text-muted-foreground text-foreground
                     text-xs       
                     md:text-base
                            focus:outline-0
@@ -74,71 +74,96 @@ export default function ResponseInput() {
                 <AnimatePresence>
 
                     {showOptions && (
-                        <motion.div
+                        <div
 
-                            initial={{ y: 80 }}
-                            animate={{ y: 0 }}
-                            exit={{ y: 80 }}
-                            transition={{
-                                ease: "linear",
-                                duration: .2
-                            }}
                             className="absolute inset-4 top-auto flex-center-between">
                             <div className="flex-row-center gap-x-2">
+                                <motion.div
+                                    initial={{ scale: 0 }}
+                                    animate={{ scale: 1 }}
+                                    exit={{ scale: 0 }}
+                                    transition={{
+                                        ease: "linear",
+                                        duration: .2
+                                    }}
+                                >
 
-                                <Button
-                                    onClick={formatResponse}
-                                    size="sm" variant="primary">
-                                    <AlignLeftIcon className="size-4" />
-                                    <Typography variant="body-sm">Format</Typography>
-                                </Button>
-                                <Button
-                                    onClick={clearResponse}
-                                    size="icon" variant="destructive">
-                                    <TrashIcon className="size-4" />
-                                </Button>
+                                    <Button
+                                        onClick={formatResponse}
+                                        size="sm" variant="primary">
+                                        <AlignLeftIcon className="size-4" />
+                                        <Typography variant="body-sm">Format</Typography>
+                                    </Button>
+                                </motion.div>
+                                <motion.div
+                                    initial={{ scale: 0 }}
+                                    animate={{ scale: 1 }}
+                                    exit={{ scale: 0 }}
+                                    transition={{
+                                        ease: "linear",
+                                        duration: .2
+                                    }}
+                                >
+
+                                    <Button
+                                        onClick={clearResponse}
+                                        size="icon" variant="destructive">
+                                        <TrashIcon className="size-4" />
+                                    </Button>
+                                </motion.div>
 
                             </div>
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                exit={{ scale: 0 }}
+                                transition={{
+                                    ease: "linear",
+                                    duration: .2
+                                }}
+                            >
 
-                            <Button
-                                onClick={copy}
-                                disabled={isCopying}
-                                className="overflow-clip"
-                                size="icon" variant="success">
-                                <AnimatePresence mode="wait">
-                                    {copied ? (
-                                        <motion.div
-                                            key={'copy-check'}
-                                            initial={{ y: -25 }}
-                                            animate={{ y: 0 }}
-                                            exit={{ y: 25 }}
-                                            transition={{
-                                                ease: "linear",
-                                                duration: .1
-                                            }}
-                                        >
-                                            <CopyCheckIcon
+                                <Button
+                                    onClick={copy}
+                                    disabled={isCopying}
+                                    className="overflow-clip"
+                                    size="icon" variant="success">
+                                    <AnimatePresence mode="wait">
+                                        {copied ? (
+                                            <motion.div
+                                                key={'copy-check'}
+                                                initial={{ y: -25 }}
+                                                animate={{ y: 0 }}
+                                                exit={{ y: 25 }}
+                                                transition={{
+                                                    ease: "linear",
+                                                    duration: .1
+                                                }}
+                                            >
+                                                <CopyCheckIcon
 
-                                                className="size-4 text-success" />
-                                        </motion.div>
-                                    ) : (
-                                        <motion.div
-                                            key={'copy'}
-                                            initial={{ y: -25 }}
-                                            animate={{ y: 0 }}
-                                            exit={{ y: 25 }}
-                                            transition={{
-                                                ease: "linear",
-                                                duration: .1
-                                            }}
-                                        >
+                                                    className="size-4 text-success" />
+                                            </motion.div>
+                                        ) : (
+                                            <motion.div
+                                                key={'copy'}
+                                                initial={{ y: -25 }}
+                                                animate={{ y: 0 }}
+                                                exit={{ y: 25 }}
+                                                transition={{
+                                                    ease: "linear",
+                                                    duration: .1
+                                                }}
+                                            >
 
-                                            <CopyIcon className={`size-4`} />
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </Button>
-                        </motion.div>
+                                                <CopyIcon className={`size-4`} />
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </Button>
+
+                            </motion.div>
+                        </div>
                     )}
 
                 </AnimatePresence>

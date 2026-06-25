@@ -48,7 +48,7 @@ export default function SettingsPopup() {
             </Button>
 
             {open && (
-                <ul className='flex flex-col justify-start bg-linear-to-b from-background to-secondary/30 backdrop-blur-3xl border-t border-secondary-foreground/30 absolute top-full right-0 h-fit mt-2 rounded-3xl overflow-clip'>
+                <ul className='flex flex-col justify-start bg-linear-to-b from-background to-secondary/30 backdrop-blur-3xl border-t border-border absolute top-full right-0 h-fit mt-2 rounded-3xl overflow-clip'>
                     {userSettings.map(item => (
                         <li key={item.id} className='flex-center-between gap-x-4 md:gap-x-8 px-4 py-2'>
 
