@@ -21,8 +21,8 @@ ResType helps developers quickly generate TypeScript interfaces or type aliases 
 ## Screenshots
 
 <p align="center">
-  <img src="./assets/screenshots/1.png" alt="Main Interface - Dark Theme" width="48%" />
-  <img src="./assets/screenshots/2.png" alt="Main Interface - Light Theme" width="48%" />
+  <img src="./public/screenshots/1.png" alt="Main Interface - Dark Theme" width="48%" />
+  <img src="./public/screenshots/2.png" alt="Main Interface - Light Theme" width="48%" />
 </p>
 
 ## Tech Stack
