@@ -48,7 +48,7 @@ export default function ResponseInput() {
         <div className="flex flex-col gap-y-2 flex-1 min-h-0">
             <label htmlFor="">
                 <Typography variant='label'>
-                    Api Response
+                    Api Response (JSON)
                 </Typography>
             </label>
             <div className="flex relative overflow-clip flex-1 min-h-0">

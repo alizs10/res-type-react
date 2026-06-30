@@ -1,75 +1,90 @@
-# React + TypeScript + Vite
+# ResType
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A browser-based tool that instantly converts JSON responses into TypeScript interfaces or type aliases, eliminating the need to manually write types from API responses.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+ResType helps developers quickly generate TypeScript interfaces or type aliases from JSON data. It removes the repetitive task of manually creating types from API responses while providing a clean, responsive interface and developer-friendly features.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Convert JSON into TypeScript interfaces or type aliases
+* Syntax-highlighted output with line numbers
+* Animated line-by-line code rendering
+* Switch between Interface and Type Alias
+* Toggle the `export` keyword
+* Built-in JSON formatting and validation
+* Copy generated code to the clipboard
+* Dark, Light, and System theme support
+* Fully responsive design
 
-## Expanding the ESLint configuration
+## Screenshots
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<p align="center">
+  <img src="./assets/screenshots/1.png" alt="Main Interface - Dark Theme" width="48%" />
+  <img src="./assets/screenshots/2.png" alt="Main Interface - Light Theme" width="48%" />
+</p>
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Language
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* TypeScript
 
+### Framework
+
+* React 19
+* Vite 8
+
+### Libraries
+
+* Tailwind CSS 4
+* Framer Motion
+* Lucide React
+* react-syntax-highlighter
+
+## Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/<your-username>/ResType.git
+cd ResType
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
+
+### Start the development server
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed in your terminal (typically `http://localhost:5173`).
+
+## How It Works
+
+1. Paste a JSON object or API response into the editor.
+2. The application validates and formats the JSON.
+3. TypeScript types are generated instantly.
+4. Choose between an interface or a type alias.
+5. Copy the generated code with a single click.
+
+## Connect
+
+**Portfolio**
+https://alizs10.ir
+
+**LinkedIn**
+https://www.linkedin.com/in/ali-z-soleimani-46a908237
+
+**Email**
+[alizswork@gmail.com](mailto:alizswork@gmail.com)
+
+## License
+
+This project is licensed under the MIT License.
