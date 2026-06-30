@@ -48,8 +48,8 @@ ResType helps developers quickly generate TypeScript interfaces or type aliases 
 ### Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/ResType.git
-cd ResType
+git clone https://github.com/alizs10/res-type-react.git
+cd res-type-react
 ```
 
 ### Install dependencies
